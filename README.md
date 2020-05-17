@@ -16,7 +16,7 @@ A Flutter package allows you to easily implement the Credit card's UI easily wit
     
 ```dart
 dependencies:
-   flutter_credit_card_lang_suport:
+   flutter_credit_card:
     git:
       url: https://github.com/marcosradix/flutter_credit_card_lang_suport.git
 ```
