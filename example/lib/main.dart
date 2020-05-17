@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/credit_card_form.dart';
 import 'package:flutter_credit_card/credit_card_model.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
+import 'package:flutter_credit_card/form_config.dart';
 
 void main() => runApp(MySample());
 
@@ -38,10 +39,12 @@ class MySampleState extends State<MySample> {
                 cardHolderName: cardHolderName,
                 cvvCode: cvvCode,
                 showBackView: isCvvFocused,
+                formConfig: const FormConfig(),
               ),
               Expanded(
                 child: SingleChildScrollView(
                   child: CreditCardForm(
+                    formConfig: const FormConfig(),
                     onCreditCardModelChange: onCreditCardModelChange,
                   ),
                 ),

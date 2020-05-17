@@ -17,7 +17,7 @@ class CreditCardWidget extends StatefulWidget {
     this.width,
     this.textStyle,
     this.cardBgColor = const Color(0xff1b447b),
-    this.formConfig
+    @required this.formConfig
   })  : assert(cardNumber != null),
         assert(showBackView != null),
         super(key: key);

@@ -16,7 +16,7 @@ class CreditCardForm extends StatefulWidget {
     this.themeColor,
     this.textColor = Colors.black,
     this.cursorColor,
-    this.formConfig
+    @required this.formConfig
   }) : super(key: key);
 
   final String cardNumber;
@@ -139,7 +139,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
                   color: widget.textColor,
                 ),
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   labelText: '${widget.formConfig.cardNumberLabel}',
                   hintText: 'xxxx xxxx xxxx xxxx',
                 ),
@@ -157,7 +157,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
                   color: widget.textColor,
                 ),
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                    border: const OutlineInputBorder(),
                     labelText: '${widget.formConfig.expiryDateLabel}',
                     hintText: '${widget.formConfig.expiryDateLabelHintText}'),
                 keyboardType: TextInputType.number,
@@ -175,7 +175,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
                   color: widget.textColor,
                 ),
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   labelText: '${widget.formConfig.cvvCodeLabel}',
                   hintText: 'XXXX',
                 ),
@@ -198,7 +198,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
                   color: widget.textColor,
                 ),
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   labelText: '${widget.formConfig.cardHolderNameLabel}',
                 ),
                 keyboardType: TextInputType.text,
