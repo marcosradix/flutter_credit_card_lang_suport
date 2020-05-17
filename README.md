@@ -43,9 +43,9 @@ import 'package:flutter_credit_card/flutter_credit_card.dart';
     child: CreditCardForm(
         formConfig: FormConfig(
             cardNumberLabel: 'Número do cartão',
-            expiryDateLabel: 'Data de expiração'
+            expiryDateLabel: 'Data de expiração',
             expiryDateLabelHintText:'MÊS/ANO',
-            cardHolderNameLabel: 'Nome como no cartão'
+            cardHolderNameLabel: 'Nome como no cartão',
             cvvCodeLabel: 'Código de segurança'
         ),
 ..........
