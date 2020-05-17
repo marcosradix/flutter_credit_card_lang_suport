@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import 'form_config.dart';
+
 class CreditCardWidget extends StatefulWidget {
   const CreditCardWidget({
     Key key,
@@ -15,6 +17,7 @@ class CreditCardWidget extends StatefulWidget {
     this.width,
     this.textStyle,
     this.cardBgColor = const Color(0xff1b447b),
+    this.formConfig
   })  : assert(cardNumber != null),
         assert(showBackView != null),
         super(key: key);
@@ -29,6 +32,7 @@ class CreditCardWidget extends StatefulWidget {
   final Duration animationDuration;
   final double height;
   final double width;
+  final FormConfig formConfig;
 
   @override
   _CreditCardWidgetState createState() => _CreditCardWidgetState();
@@ -291,7 +295,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
               padding: const EdgeInsets.only(left: 16),
               child: Text(
                 widget.expiryDate.isEmpty || widget.expiryDate == null
-                    ? 'MM/YY'
+                    ? '${widget.formConfig.expiryDateLabelHintText}'
                     : widget.expiryDate,
                 style: widget.textStyle ?? defaultTextStyle,
               ),
@@ -302,7 +306,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
               padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
               child: Text(
                 widget.cardHolderName.isEmpty || widget.cardHolderName == null
-                    ? 'CARD HOLDER'
+                    ? '${widget.formConfig.cardHolderNameLabel}'
                     : widget.cardHolderName,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
