@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 
 import 'credit_card_model.dart';
+import 'form_config.dart';
 
 class CreditCardForm extends StatefulWidget {
   const CreditCardForm({
@@ -15,6 +16,7 @@ class CreditCardForm extends StatefulWidget {
     this.themeColor,
     this.textColor = Colors.black,
     this.cursorColor,
+    this.formConfig
   }) : super(key: key);
 
   final String cardNumber;
@@ -25,6 +27,7 @@ class CreditCardForm extends StatefulWidget {
   final Color themeColor;
   final Color textColor;
   final Color cursorColor;
+  final FormConfig formConfig;
 
   @override
   _CreditCardFormState createState() => _CreditCardFormState();
@@ -137,7 +140,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
                 ),
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Card number',
+                  labelText: '${widget.formConfig.cardNumberLabel}',
                   hintText: 'xxxx xxxx xxxx xxxx',
                 ),
                 keyboardType: TextInputType.number,
@@ -155,8 +158,8 @@ class _CreditCardFormState extends State<CreditCardForm> {
                 ),
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Expired Date',
-                    hintText: 'MM/YY'),
+                    labelText: '${widget.formConfig.expiryDateLabel}',
+                    hintText: '${widget.formConfig.expiryDateLabelHintText}'),
                 keyboardType: TextInputType.number,
                 textInputAction: TextInputAction.next,
               ),
@@ -173,7 +176,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
                 ),
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'CVV',
+                  labelText: '${widget.formConfig.cvvCodeLabel}',
                   hintText: 'XXXX',
                 ),
                 keyboardType: TextInputType.number,
@@ -196,7 +199,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
                 ),
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Card Holder',
+                  labelText: '${widget.formConfig.cardHolderNameLabel}',
                 ),
                 keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.next,

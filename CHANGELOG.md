@@ -1,3 +1,6 @@
+## 0.1.5
+*   Feature : Support new language.
+
 ## 0.1.3
 *   Feature : Applied Default ThemeData.
 
