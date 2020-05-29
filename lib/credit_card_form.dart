@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_credit_card/formState.dart';
+import 'package:flutter_credit_card/form_state.dart';
 import 'package:get/get.dart';
 import 'credit_card_model.dart';
 import 'form_config.dart';
