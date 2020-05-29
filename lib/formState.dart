@@ -1,8 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_credit_card/credit_card_widget.dart';
 import 'package:get/get.dart';
-
-import '../credit_card_widget.dart';
 
 
 class MyFormState extends GetController{
