@@ -479,6 +479,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
         break;
 
       default:
+       BrandNameController.to.brandName = '';
         icon = Container(
           height: 48,
           width: 48,
