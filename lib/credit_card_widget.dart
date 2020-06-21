@@ -1,7 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
+import 'brand_name_controller.dart';
 import 'form_config.dart';
 
 class CreditCardWidget extends StatefulWidget {
@@ -112,6 +113,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
 
   @override
   Widget build(BuildContext context) {
+    Get.put<BrandNameController>(BrandNameController());
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
     final Orientation orientation = MediaQuery.of(context).orientation;
@@ -426,9 +428,13 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
   // This method returns the icon for the visa card type if found
   // else will return the empty container
   Widget getCardTypeIcon(String cardNumber, {String brandName, bool isBrandName = false}) {
+    if(isBrandName){
+      BrandNameController.to.brandName = brandName;
+    }
     Widget icon;
     switch (detectCCType(cardNumber, isBrandName: isBrandName, brandName: brandName )) {
       case CardType.visa:
+      BrandNameController.to.brandName = 'visa';
         icon = Image.asset(
           'icons/visa.png',
           height: 48,
@@ -439,6 +445,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
         break;
 
       case CardType.americanExpress:
+      BrandNameController.to.brandName = 'americanexpress';
         icon = Image.asset(
           'icons/amex.png',
           height: 48,
@@ -449,6 +456,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
         break;
 
       case CardType.mastercard:
+       BrandNameController.to.brandName = 'mastercard';
         icon = Image.asset(
           'icons/mastercard.png',
           height: 48,
@@ -459,6 +467,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
         break;
 
       case CardType.discover:
+      BrandNameController.to.brandName = 'discover';
         icon = Image.asset(
           'icons/discover.png',
           height: 48,

@@ -3,6 +3,7 @@ import 'package:flutter_credit_card/credit_card_form.dart';
 import 'package:flutter_credit_card/credit_card_model.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:flutter_credit_card/form_config.dart';
+import 'package:flutter_credit_card/brand_name_controller.dart';
 import 'package:flutter_credit_card/form_state.dart';
 
 void main() => runApp(MySample());
@@ -41,8 +42,6 @@ class MySampleState extends State<MySample> {
                 cvvCode: cvvCode,
                 showBackView: isCvvFocused,
                 formConfig: const FormConfig(),
-                brandName: 'AmericanExpress',
-                isBrandName: true,
               ),
               Expanded(
                 child: SingleChildScrollView(
@@ -58,6 +57,7 @@ class MySampleState extends State<MySample> {
         ),
          floatingActionButton: FloatingActionButton(
            onPressed: (){
+             print('Brand: ${BrandNameController.to.brandName}');
              MyFormState.to.cleanForm();
            },
          )

@@ -42,17 +42,13 @@ class _CreditCardFormState extends State<CreditCardForm> {
   String expiryDate;
   String cardHolderName;
   String cvvCode;
+  String brand;
   bool isCvvFocused = false;
   Color themeColor;
   bool submmited =false;
 
   void Function(CreditCardModel) onCreditCardModelChange;
   CreditCardModel creditCardModel;
-
-  //final MaskedTextController _cardNumberController = MaskedTextController(mask: '0000 0000 0000 0000');
-  //final TextEditingController _expiryDateController = MaskedTextController(mask: '00/00');
-  //final TextEditingController _cardHolderNameController = TextEditingController();
-  //final TextEditingController _cvvCodeController = MaskedTextController(mask: '0000');
 
   FocusNode cvvFocusNode = FocusNode();
 
