@@ -41,6 +41,8 @@ class MySampleState extends State<MySample> {
                 cvvCode: cvvCode,
                 showBackView: isCvvFocused,
                 formConfig: const FormConfig(),
+                brandName: 'AmericanExpress',
+                isBrandName: true,
               ),
               Expanded(
                 child: SingleChildScrollView(
