@@ -12,6 +12,8 @@ class CreditCardWidget extends StatefulWidget {
     @required this.cardHolderName,
     @required this.cvvCode,
     @required this.showBackView,
+    this.brandName,
+    this.isBrandName = false,
     this.animationDuration = const Duration(milliseconds: 500),
     this.height,
     this.width,
@@ -33,7 +35,8 @@ class CreditCardWidget extends StatefulWidget {
   final double height;
   final double width;
   final FormConfig formConfig;
-
+  final String brandName;
+  final bool isBrandName;
   @override
   _CreditCardWidgetState createState() => _CreditCardWidgetState();
 }
@@ -224,7 +227,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
               alignment: Alignment.bottomRight,
               child: Padding(
                 padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
-                child: getCardTypeIcon(widget.cardNumber),
+                child: getCardTypeIcon(widget.cardNumber, isBrandName: widget.isBrandName, brandName: widget.brandName),
               ),
             ),
           ),
@@ -275,7 +278,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
             alignment: Alignment.topRight,
             child: Padding(
               padding: const EdgeInsets.only(left: 16, right: 16, top: 8),
-              child: getCardTypeIcon(widget.cardNumber),
+              child: getCardTypeIcon(widget.cardNumber, isBrandName: widget.isBrandName, brandName: widget.brandName),
             ),
           ),
           Expanded(
@@ -347,15 +350,38 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
     },
   };
 
+
+    CardType getBrandTypeName(String type) {
+    switch (type) {
+      case 'visa':
+        return CardType.visa;
+      case  'mastercard':
+        return CardType.mastercard;
+      case  'americanexpress':
+        return CardType.americanExpress;
+      case 'amex':
+        return CardType.americanExpress;
+      case  'discover':
+        return CardType.discover;
+      default:
+        return CardType.otherBrand;
+    }
+  }
+
   /// This function determines the Credit Card type based on the cardPatterns
   /// and returns it.
-  CardType detectCCType(String cardNumber) {
+  CardType detectCCType(String cardNumber, {String brandName, bool isBrandName = false}) {
+       if(isBrandName == true){
+     return getBrandTypeName(brandName.toLowerCase());
+    }
     //Default card type is other
     CardType cardType = CardType.otherBrand;
 
-    if (cardNumber.isEmpty) {
+    if (cardNumber.isEmpty &&  isBrandName == false) {
       return cardType;
     }
+
+ 
 
     cardNumPatterns.forEach(
       (CardType type, Set<List<String>> patterns) {
@@ -399,9 +425,9 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
 
   // This method returns the icon for the visa card type if found
   // else will return the empty container
-  Widget getCardTypeIcon(String cardNumber) {
+  Widget getCardTypeIcon(String cardNumber, {String brandName, bool isBrandName = false}) {
     Widget icon;
-    switch (detectCCType(cardNumber)) {
+    switch (detectCCType(cardNumber, isBrandName: isBrandName, brandName: brandName )) {
       case CardType.visa:
         icon = Image.asset(
           'icons/visa.png',
