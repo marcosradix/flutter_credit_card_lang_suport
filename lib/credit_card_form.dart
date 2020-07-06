@@ -72,6 +72,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
     onCreditCardModelChange = widget.onCreditCardModelChange;
     cvvFocusNode.addListener(textFieldFocusDidChange);
     MyFormState.to.cardNumberController.addListener(() {
+      Get.put<MyFormState>(MyFormState());
       setState(() {
         cardNumber = MyFormState.to.cardNumberController.text;
         creditCardModel.cardNumber = cardNumber;
@@ -80,6 +81,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
     });
 
     MyFormState.to.expiryDateController.addListener(() {
+      Get.put<MyFormState>(MyFormState());
       setState(() {
         expiryDate = MyFormState.to.expiryDateController.text;
         creditCardModel.expiryDate = expiryDate;
@@ -88,6 +90,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
     });
 
     MyFormState.to.cardHolderNameController.addListener(() {
+      Get.put<MyFormState>(MyFormState());
       setState(() {
         cardHolderName = MyFormState.to.cardHolderNameController.text;
         creditCardModel.cardHolderName = cardHolderName;
