@@ -61,8 +61,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
     cardHolderName = widget.cardHolderName ?? '';
     cvvCode = widget.cvvCode ?? '';
 
-    creditCardModel = CreditCardModel(
-        cardNumber, expiryDate, cardHolderName, cvvCode, isCvvFocused);
+    creditCardModel = CreditCardModel(cardNumber, expiryDate, cardHolderName, cvvCode, isCvvFocused);
   }
 
   @override
@@ -97,6 +96,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
     });
 
     MyFormState.to.cvvCodeController.addListener(() {
+      Get.put<MyFormState>(MyFormState());
       setState(() {
         cvvCode = MyFormState.to.cvvCodeController.text;
         creditCardModel.cvvCode = cvvCode;
@@ -154,8 +154,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
                       decoration: InputDecoration(
                           border: const OutlineInputBorder(),
                           labelText: '${widget.formConfig.expiryDateLabel}',
-                          hintText:
-                              '${widget.formConfig.expiryDateLabelHintText}'),
+                          hintText: '${widget.formConfig.expiryDateLabelHintText}'),
                       keyboardType: TextInputType.number,
                       textInputAction: TextInputAction.next,
                     ),
