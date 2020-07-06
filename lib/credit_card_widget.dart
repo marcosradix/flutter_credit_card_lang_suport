@@ -206,7 +206,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget> with SingleTickerPr
                       child: Padding(
                         padding: const EdgeInsets.all(5),
                         child: Text(
-                          widget.cvvCode.isNotEmpty ? isAmex ? 'XXXX' : 'XXX' : widget.cvvCode,
+                          widget.cvvCode.isEmpty ? isAmex ? 'XXXX' : 'XXX' : widget.cvvCode,
                           maxLines: 1,
                           style: widget.textStyle ?? defaultTextStyle,
                         ),
